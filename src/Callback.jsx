@@ -1,7 +1,7 @@
 // src/Callback.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { obtenerAccessToken } from "./mercadoLibreApi";
+import { obtenerAccessToken } from "./mercadoLibreAuth";  // Asegúrate de tener esta función definida
 
 const Callback = () => {
   const [loading, setLoading] = useState(false);
@@ -47,5 +47,6 @@ const Callback = () => {
 };
 
 export default Callback;
+
 
 
