@@ -3,8 +3,11 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Callback from "./Callback";
 
-const CLIENT_ID = "4308375213476668";  // Sustituye con tu client_id
-const REDIRECT_URI = "https://pormociones-ml.netlify.app/";  // La misma URI que usaste en la configuración
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+
+const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
+
+
 
 const App = () => {
   const handleLogin = () => {

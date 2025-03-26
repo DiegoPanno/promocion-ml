@@ -1,4 +1,10 @@
 // netlify/functions/getAccessToken.js
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
+const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
+
+
+
 import fetch from "node-fetch";
 
 export async function handler(event) {
@@ -8,9 +14,7 @@ export async function handler(event) {
 
   const { code } = JSON.parse(event.body);
   
-  const CLIENT_ID = "4308375213476668";
-  const CLIENT_SECRET = process.env.CLIENT_SECRET;  // Se define en Netlify
-  const REDIRECT_URI = "https://pormociones-ml.netlify.app/";
+  
 
   const url = "https://api.mercadolibre.com/oauth/token";
   const body = new URLSearchParams({
