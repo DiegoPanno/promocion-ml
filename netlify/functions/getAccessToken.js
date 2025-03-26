@@ -1,27 +1,19 @@
-// netlify/functions/getAccessToken.js
-const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
-const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
-const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
+const fetch = require("node-fetch");
 
-
-
-import fetch from "node-fetch";
-
-export async function handler(event) {
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
-  }
-
+exports.handler = async (event) => {
   const { code } = JSON.parse(event.body);
-  
-  
+
+  const CLIENT_ID = process.env.CLIENT_ID;
+  const CLIENT_SECRET = process.env.CLIENT_SECRET;
+  const REDIRECT_URI = process.env.REDIRECT_URI;
 
   const url = "https://api.mercadolibre.com/oauth/token";
+
   const body = new URLSearchParams({
     grant_type: "authorization_code",
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
-    code,
+    code: code,
     redirect_uri: REDIRECT_URI,
   });
 
@@ -33,14 +25,8 @@ export async function handler(event) {
     });
 
     const data = await response.json();
-    return {
-      statusCode: 200,
-      body: JSON.stringify(data),
-    };
+    return { statusCode: 200, body: JSON.stringify(data) };
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Error al obtener el token" }),
-    };
+    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
   }
-}
+};

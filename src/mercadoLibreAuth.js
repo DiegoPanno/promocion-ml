@@ -1,6 +1,5 @@
-// src/mercadoLibreApi.js
 export const obtenerAccessToken = async (code) => {
-  const url = "/.netlify/functions/getAccessToken";  // Llamada a la función de Netlify
+  const url = "/.netlify/functions/getAccessToken";  
 
   try {
     const response = await fetch(url, {
