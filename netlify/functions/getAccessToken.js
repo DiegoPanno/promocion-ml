@@ -10,7 +10,7 @@ export async function handler(event) {
   
   const CLIENT_ID = "4308375213476668";
   const CLIENT_SECRET = process.env.CLIENT_SECRET;  // Se define en Netlify
-  const REDIRECT_URI = "https://promocion-ml.netlify.app/";
+  const REDIRECT_URI = "https://pormociones-ml.netlify.app/";
 
   const url = "https://api.mercadolibre.com/oauth/token";
   const body = new URLSearchParams({

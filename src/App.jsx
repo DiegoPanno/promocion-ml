@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Callback from "./Callback";
 
 const CLIENT_ID = "4308375213476668";  // Sustituye con tu client_id
-const REDIRECT_URI = "https://promocion-ml.netlify.app/";  // La misma URI que usaste en la configuración
+const REDIRECT_URI = "https://pormociones-ml.netlify.app/";  // La misma URI que usaste en la configuración
 
 const App = () => {
   const handleLogin = () => {
